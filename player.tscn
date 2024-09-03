@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbmxehrefn24g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8tbv"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" type="Node3D" parent="Pivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_l8tbv")
