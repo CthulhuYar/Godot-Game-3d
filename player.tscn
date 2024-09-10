@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbmxehrefn24g"]
+[gd_scene load_steps=8 format=3 uid="uid://cbmxehrefn24g"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7kqfe"]
+[ext_resource type="Script" path="res://camera_position_target.gd" id="2_rac50"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6icpa"]
 
@@ -17,11 +18,8 @@ albedo_color = Color(0.177793, 0.447187, 0.134449, 1)
 material = SubResource("StandardMaterial3D_mn1j4")
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_7kqfe")
-
-[node name="Pivot" type="Node3D" parent="."]
-
-[node name="Character" type="Node3D" parent="Pivot"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_6icpa")
@@ -29,13 +27,14 @@ shape = SubResource("CylinderShape3D_6icpa")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_wk3ms")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.943483, 0.33142, 0, -0.33142, 0.943483, 0, 3.56349, 4.336)
-projection = 1
-fov = 120.0
-size = 9.108
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.18557e-08, 1, 0, -0.5, -4.37114e-08, 0, 0, 0, 0.5, 0.395255, 1.037, 0)
+transform = Transform3D(9.55343e-16, -4.37114e-08, 0.5, -0.5, -4.37114e-08, 0, 2.18557e-08, -1, -2.18557e-08, 0.124451, 1.07406, -0.372364)
 mesh = SubResource("PrismMesh_dc2xp")
 skeleton = NodePath("../MeshInstance3D")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5)
+script = ExtResource("2_rac50")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, -1.91769e-08, -4.43122e-09, 1.91769e-08, 0.898626, 0.438716, -4.4312e-09, -0.438716, 0.898626, 0, 0, 0)
